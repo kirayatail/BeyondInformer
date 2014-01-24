@@ -4,13 +4,12 @@ void drawPointCloud(float bottomClip,float heightClip,float rightClip,float widt
   KinectPoint3D kinect_3d[] = k3d_.get3D();
   Vec3D origo = new Vec3D (0,0,0); 
   int jump = res; // resolution, ... use every fifth point in 3d
-  
+  String pointColor = "";
   Vec3D lookAtRot=new Vec3D(0,0,0);
   
   int cam_w_ = kinectFrame_size_x;
   int cam_h_ = kinectFrame_size_y;
-  
-  
+  Vec3D cherry = getCherryCoordinate();
   
   for(int y = 0; y < cam_h_-jump ; y+=jump){
     for(int x = 0; x< cam_w_-jump*2 ; x+=jump){
@@ -46,7 +45,7 @@ void drawPointCloud(float bottomClip,float heightClip,float rightClip,float widt
       int total = cr + cg + cb;
       
       float heightBonus = (2.7-cy)*0.2;
-      
+
       if (cr > cg+35 && cr > cb) {
      //   print("Red point: x" +cx+" y"+cy+" z"+cz+" rgb:"+cr+","+cg+","+cb+"\n"); 
         redCount++;
@@ -54,15 +53,22 @@ void drawPointCloud(float bottomClip,float heightClip,float rightClip,float widt
         if(leader == 1){
           interestingColor = 1;
         }  
-      } 
-      
-      if (cb > cg+10 && cb > cr) {
+        pointColor = "blue";
+      } else if(cb > cg+10 && cb > cr) {
         blueCount++;
         blueCount += heightBonus;
         if(leader == 2){
           interestingColor = 1;
         }
+        pointColor = "red";
+      } else {
+        pointColor = "nothing";
       }
+      
+       if(abs(x-cherry.x) < jump*2 && abs(y-cherry.y) < jump*2) {
+         cherryCallback(pointColor);
+       }
+      
     // point(cx, cy, cz);
      
       lookAtRot=lookAt.getRotatedX(angleX);
