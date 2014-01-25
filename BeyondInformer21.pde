@@ -157,6 +157,8 @@ void setup() {
   showAll = 1;
   timer = new Timer(300000);
   timer.start();
+  cherryImage = loadImage("cherry.png");
+  randomizeCherry(); 
 }
 ///////////////////////////////////DRAW///////////////////////////////
 void draw () {
@@ -167,9 +169,12 @@ heightTrim = topClip;
 bottomTrim = bottomClip;
 leftTrim = leftClip;
 rightTrim = rightClip;
+ 
   //bottomClip / heightClip / rightClip / widthClip / frontClip / debthClip/ res / ptSize)
   drawPointCloud((plateY*-.5)+kinectEdge+bottomTrim, plateY+kinectEdge*2+heightTrim, -plateX*.5-kinectEdge+rightTrim, plateX+kinectEdge*2+leftTrim, 0, 6, 3, 14);
   coordinateSystem();
+  cherryMode = CherryMode.ACTIVE;
+  renderCherry();
   
   if(redCount > blueCount) {
     leader = 1; // Red is 1

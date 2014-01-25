@@ -1,5 +1,7 @@
 
 Vec3D cherryVector = new Vec3D(0,0,0);
+PImage cherryImage;
+float scaleFactor = 500;
 CherryMode cherryMode = CherryMode.INACTIVE;
 // Possible CherryMode: INACTIVE, ACTIVE, CANDIDATE
 
@@ -7,7 +9,13 @@ CherryMode cherryMode = CherryMode.INACTIVE;
 void renderCherry() {
   if (cherryMode != CherryMode.ACTIVE) {
     return;
+  } 
+  else {
+    scale(1/scaleFactor);
+    image(cherryImage, cherryVector.x*scaleFactor-cherryImage.width/2, cherryVector.y*scaleFactor-cherryImage.height/2);
+    scale(scaleFactor); 
   }
+  
   
   
 }
