@@ -1,4 +1,4 @@
-/*
+
 
 void serialEvent (Serial myPort) {
   // get the ASCII string:
@@ -24,7 +24,7 @@ void serialEvent (Serial myPort) {
     valPin4=1000-valPin4;
      valPin3 = float(pieces[14]);
      valPin3=1000-valPin3;
- /*   
+   /*
     print (" pin1: ");
     print(valPin1);
     print (" pin2 ");
@@ -38,8 +38,6 @@ void serialEvent (Serial myPort) {
      print (" mp6 ");
     print(valMp6);
     println();
-   /
+   */
  }
 }
-
-*/

@@ -53,19 +53,19 @@ void drawPointCloud(float bottomClip,float heightClip,float rightClip,float widt
         if(leader == 1){
           interestingColor = 1;
         }  
-        pointColor = "blue";
+        pointColor = "red";
       } else if(cb > cg+10 && cb > cr) {
         blueCount++;
         blueCount += heightBonus;
         if(leader == 2){
           interestingColor = 1;
         }
-        pointColor = "red";
+        pointColor = "blue";
       } else {
         pointColor = "nothing";
       }
       
-       if(abs(x-cherry.x) < jump*2 && abs(y-cherry.y) < jump*2) {
+       if(abs(cx-cherryVector.x) < ptSize && abs(cy-cherryVector.y) < ptSize) {
          cherryCallback(pointColor);
        }
       
